@@ -1,7 +1,6 @@
 #!/bin/bash
 
 export FLASK_ENV=production
-cd /home/ec2-user/BlueGreenTest/blue
 
 if [ "$1" == "blue" ]; then
     gunicorn -w 4 -b 127.0.0.1:8000 app:app
