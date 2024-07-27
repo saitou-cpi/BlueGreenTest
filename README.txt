@@ -1,6 +1,6 @@
 # BlueGreenTest
 
-sudo dnf install -y python3-pip git
+sudo dnf install -y python3-pip git nginx
 pip install virtualenv
 
 git clone https://github.com/saitou-cpi/BlueGreenTest.git
