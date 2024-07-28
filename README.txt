@@ -9,6 +9,9 @@ source .venv/bin/activate
 cd BlueGreenTest/
 pip install -r requirements.txt
 
+sudo chmod +x /home/ec2-user/.venv/bin/gunicorn
+sudo chmod -R 755 /home/ec2-user/.venv
+
 # blue.sevice and green.service copy
 sudo cp /home/ec2-user/BlueGreenTest/service_files/blue.service /etc/systemd/system/blue.service
 sudo cp /home/ec2-user/BlueGreenTest/service_files/green.service /etc/systemd/system/green.service
@@ -20,9 +23,28 @@ sudo systemctl daemon-reload
 sudo systemctl enable blue.service
 sudo systemctl enable green.service
 
-# Start services
+sestatus
+
+getenforce
+
+
+# Start services to trigger SELinux denials
 sudo systemctl start blue.service
 sudo systemctl start green.service
+
+# Generate SELinux policy module from audit logs
+sudo cat /var/log/audit/audit.log | grep "gunicorn"
+sudo grep "gunicorn" /var/log/audit/audit.log | audit2allow -M custom_policy
+
+
+
+# Apply the generated SELinux policy module
+sudo semodule -i custom_policy.pp
+
+
+# Restart services to apply the new SELinux policy
+sudo systemctl restart blue.service
+sudo systemctl restart green.service
 
 # Check status
 sudo systemctl status blue.service
