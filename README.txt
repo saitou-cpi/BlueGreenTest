@@ -55,7 +55,10 @@ sudo systemctl status green.service
 rm custom_policy.*
 
 # Setting nginx
+sudo nginx -t
+sudo nginx -s reload
 sudo cp /home/ec2-user/BlueGreenTest/nginx/nginx.conf /etc/nginx/nginx.conf
-sudo systemctl enable nginx
-sudo systemctl start nginx
+
+sudo nginx -t
+sudo nginx -s reload
 
