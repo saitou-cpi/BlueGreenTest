@@ -9,8 +9,7 @@ source .venv/bin/activate
 cd BlueGreenTest/
 pip install -r requirements.txt
 
-sudo chmod +x /home/ec2-user/.venv/bin/gunicorn
-sudo chmod -R 755 /home/ec2-user/.venv
+sudo chmod u+x deploy.sh
 
 # blue.sevice and green.service copy
 sudo cp /home/ec2-user/BlueGreenTest/service_files/blue.service /etc/systemd/system/blue.service
