@@ -32,6 +32,9 @@ getenforce
 sudo systemctl start blue.service
 sudo systemctl start green.service
 
+sudo systemctl restart blue.service
+sudo systemctl restart green.service
+
 # Generate SELinux policy module from audit logs
 sudo cat /var/log/audit/audit.log | grep "gunicorn"
 sudo grep "gunicorn" /var/log/audit/audit.log | audit2allow -M custom_policy
