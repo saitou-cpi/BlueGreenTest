@@ -52,3 +52,5 @@ sudo systemctl restart green.service
 # Check status
 sudo systemctl status blue.service
 sudo systemctl status green.service
+
+rm custom_policy.*
