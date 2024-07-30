@@ -10,7 +10,7 @@ source .venv/bin/activate
 cd BlueGreenTest/
 pip install -r requirements.txt
 
-sudo chmod u+x deploy.sh check_default_env.sh
+sudo chmod u+x deploy.sh check_default_env.sh rollback.sh 
 
 # blue.sevice and green.service copy
 sudo cp /home/ec2-user/BlueGreenTest/service_files/blue.service /etc/systemd/system/blue.service
