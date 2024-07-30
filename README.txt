@@ -54,6 +54,10 @@ sudo systemctl status green.service
 
 rm custom_policy.*
 
+# Startign nginx
+sudo systemctl enable nginx
+sudo systemctl start nginx
+
 # Setting nginx
 sudo nginx -t
 sudo nginx -s reload
