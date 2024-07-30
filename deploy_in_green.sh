@@ -1,4 +1,5 @@
 #!/bin/bash
+# Blue → Green
 
 # Pull latest code
 git pull origin main
@@ -13,17 +14,12 @@ sudo systemctl restart green.service
 echo "http://example.com/green を確認し、問題なければ 'y'、問題がある場合は 'Ctrl+C' を押してください..."
 read -n 1 -s
 
-# Swap nginx config to point to green as the main environment
-sudo sed -i 's/8000/8001/g' /etc/nginx/nginx.conf
+# Swap upstream environment to point to green as the main environment
+sudo sed -i 's/set $upstream_env blue;/set $upstream_env green;/g' /etc/nginx/nginx.conf
 sudo nginx -s reload
 
-# Swap the directories
-mv ./blue ./blue_old
-mv ./green ./blue
-mv ./blue_old ./green
-
-# Restart both environments
+# Restart both environments to apply the new configuration
 sudo systemctl restart blue.service
 sudo systemctl restart green.service
 
-echo "Deployment complete. Blue is now running on port 8001 and green on port 8000."
+echo "Deployment complete. Green is now the new production environment."
