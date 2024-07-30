@@ -9,7 +9,7 @@ source .venv/bin/activate
 cd BlueGreenTest/
 pip install -r requirements.txt
 
-sudo chmod u+x deploy.sh
+sudo chmod u+x deploy.sh check_default_env.sh
 
 # blue.sevice and green.service copy
 sudo cp /home/ec2-user/BlueGreenTest/service_files/blue.service /etc/systemd/system/blue.service
@@ -62,5 +62,12 @@ sudo systemctl start nginx
 sudo cp /home/ec2-user/BlueGreenTest/nginx/nginx.conf /etc/nginx/nginx.conf
 sudo nginx -t
 sudo nginx -s reload
+
+
+# Blue環境にデプロイする場合
+./deploy.sh blue
+
+# Green環境にデプロイする場合
+./deploy.sh green
 
 
