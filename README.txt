@@ -59,9 +59,9 @@ sudo systemctl enable nginx
 sudo systemctl start nginx
 
 # Setting nginx
+sudo cp /home/ec2-user/BlueGreenTest/nginx/nginx.conf /etc/nginx/nginx.conf
 sudo nginx -t
 sudo nginx -s reload
-sudo cp /home/ec2-user/BlueGreenTest/nginx/nginx.conf /etc/nginx/nginx.conf
 
 sudo nginx -t
 sudo nginx -s reload
