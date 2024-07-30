@@ -62,6 +62,7 @@ sudo systemctl start nginx
 sudo cp /home/ec2-user/BlueGreenTest/nginx/nginx.conf /etc/nginx/nginx.conf
 sudo nginx -t
 sudo nginx -s reload
+sudo systemctl status nginx
 
 
 # Blue環境にデプロイする場合
