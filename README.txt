@@ -1,5 +1,6 @@
 # BlueGreenTest
 
+# セッティング
 sudo dnf install -y python3-pip git nginx
 pip install virtualenv
 
@@ -65,10 +66,18 @@ sudo nginx -s reload
 sudo systemctl status nginx
 
 
+# 使い方
+# 現在のデフォルト環境を確認する場合
+./check_default_env.sh
+
 # Blue環境にデプロイする場合
 ./deploy.sh blue
 
 # Green環境にデプロイする場合
 ./deploy.sh green
 
+# Blue環境にロールバックする場合
+./rollback.sh blue
 
+# Green環境にロールバックする場合
+./rollback.sh green
