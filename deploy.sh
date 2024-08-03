@@ -22,9 +22,6 @@ else
     exit 1
 fi
 
-# Pull latest code
-git pull origin main
-
 # Apply changes to the target environment
 cp -r ./new_code/* $TARGET_DIR
 
